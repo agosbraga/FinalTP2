@@ -1,15 +1,12 @@
-require('dotenv').config();
-const express = require('express');
+import express from "express";
+import inventoryRoutes from "./routes/inventoryRoutes.js";
+
 const app = express();
-const PORT = process.env.PORT || 3000;
-
-// Middlewares
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
-// Routes
-// Ejemplo: const userRoutes = require('./routes/userRoutes');
-// app.use('/users', userRoutes);
+app.use("/api", inventoryRoutes);
 
-app.listen(PORT, () => {
-    console.log(`Server is running on port ${PORT}`);
+app.listen(8080, () => {
+  console.log(`🚀 Servidor corriendo en http://localhost:8080`);
 });
